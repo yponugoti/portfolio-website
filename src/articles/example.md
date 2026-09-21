@@ -1,7 +1,8 @@
 ---
 title: "example1"
-category: "swe"
+category: "Software Engineering"
 date: "09-18-2026"
 ---
 
-# example blog article! 
+# example blog article!
+# Hello!
