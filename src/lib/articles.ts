@@ -9,15 +9,23 @@ import type { ArticleItem } from "../types"
 
 const articlesDirectory = path.join(process.cwd(), "src", "articles")
 
-const getSortedArticles = (): ArticleItem[] => {
-  const fileNames = fs.readdirSync(articlesDirectory)
+// Dates in article front matter are written as MM-DD-YYYY.
+const DATE_FORMAT = "MM-DD-YYYY"
 
-  const allArticlesData = fileNames.map((fileName) => {
-    const id = fileName.replace(/\.md$/, "")
+export const formatArticleDate = (date: string, format = "MMMM Do YYYY") =>
+  moment(date, DATE_FORMAT).format(format)
 
-    const fullPath = path.join(articlesDirectory, fileName)
+export const getArticleIds = (): string[] =>
+  fs
+    .readdirSync(articlesDirectory)
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map((fileName) => fileName.replace(/\.md$/, ""))
+
+/** All articles, newest first. */
+export const getSortedArticles = (): ArticleItem[] => {
+  const allArticlesData = getArticleIds().map((id) => {
+    const fullPath = path.join(articlesDirectory, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, "utf-8")
-
     const matterResult = matter(fileContents)
 
     return {
@@ -28,25 +36,20 @@ const getSortedArticles = (): ArticleItem[] => {
     }
   })
 
-  return allArticlesData.sort((a, b) => {
-    const format = "DD-MM-YYYY"
-    const dateOne = moment(a.date, format)
-    const dateTwo = moment(b.date, format)
-    if (dateOne.isBefore(dateTwo)) {
-      return -1
-    } else if (dateTwo.isAfter(dateOne)) {
-      return 1
-    } else {
-      return 0
-    }
-  })
+  return allArticlesData.sort(
+    (a, b) =>
+      moment(b.date, DATE_FORMAT).valueOf() -
+      moment(a.date, DATE_FORMAT).valueOf(),
+  )
 }
 
+export const getRecentArticles = (count: number): ArticleItem[] =>
+  getSortedArticles().slice(0, count)
+
 export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
-  const sortedArticles = getSortedArticles()
   const categorisedArticles: Record<string, ArticleItem[]> = {}
 
-  sortedArticles.forEach((article) => {
+  getSortedArticles().forEach((article) => {
     if (!categorisedArticles[article.category]) {
       categorisedArticles[article.category] = []
     }
@@ -56,25 +59,25 @@ export const getCategorisedArticles = (): Record<string, ArticleItem[]> => {
   return categorisedArticles
 }
 
+/** Returns null if no article with this id exists. */
 export const getArticleData = async (id: string) => {
+  if (!getArticleIds().includes(id)) {
+    return null
+  }
+
   const fullPath = path.join(articlesDirectory, `${id}.md`)
-
   const fileContents = fs.readFileSync(fullPath, "utf-8")
-
   const matterResult = matter(fileContents)
 
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content)
 
-  const contentHtml = processedContent.toString()
-
   return {
     id,
-    contentHtml,
-    title: matterResult.data.title,
-    category: matterResult.data.category,
-    date: moment(matterResult.data.date, "MM-DD-YYYY").format("MMMM Do YYYY"),
+    contentHtml: processedContent.toString(),
+    title: matterResult.data.title as string,
+    category: matterResult.data.category as string,
+    date: formatArticleDate(matterResult.data.date),
   }
 }
-

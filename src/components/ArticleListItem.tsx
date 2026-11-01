@@ -13,7 +13,7 @@ const ArticleItemList = ({ category, articles }: Props) => {
       <div className="flex flex-col gap-2.5 font-poppins text-lg">
         {articles.map((article) => (
           <Link
-            href={`/${article.id}`}
+            href={`/writing/${article.id}`}
             key={article.id}
             className="text-neutral-900 hover:text-amber-700 transition duration-150"
           >
