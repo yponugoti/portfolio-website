@@ -35,7 +35,6 @@ export type Portfolio = {
   email: string
   socials: Link[]
   resume?: string
-  skills: Record<string, string[]>
   experience: Experience[]
   projects: Project[]
 }

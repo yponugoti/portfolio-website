@@ -5,7 +5,6 @@ import ExperienceItem from "@/components/ExperienceItem"
 import ExternalLink from "@/components/ExternalLink"
 import ProjectCard from "@/components/ProjectCard"
 import Section from "@/components/Section"
-import TechList from "@/components/TechList"
 import { portfolio } from "@/data/portfolio"
 import { getRecentArticles } from "@/lib/articles"
 
@@ -32,18 +31,6 @@ const HomePage = () => {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-        <dl className="flex flex-col gap-3 font-poppins">
-          {Object.entries(portfolio.skills).map(([group, items]) => (
-            <div key={group} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <dt className="text-sm text-neutral-500 sm:w-24 shrink-0 pt-1">
-                {group}
-              </dt>
-              <dd>
-                <TechList items={items} />
-              </dd>
-            </div>
-          ))}
-        </dl>
         <div className="flex flex-wrap gap-5 font-poppins text-neutral-700">
           {portfolio.socials.map((social) => (
             <ExternalLink key={social.href} href={social.href}>
@@ -98,22 +85,6 @@ const HomePage = () => {
             Nothing published yet — check back soon.
           </p>
         )}
-      </Section>
-
-      <Section id="contact" title="Contact">
-        <div className="flex flex-col gap-6 font-poppins text-lg text-neutral-700">
-          <p>
-            I&apos;m currently open to internship and new-grad opportunities.
-            Whether you have a role in mind, a question, or just want to say hi,
-            my inbox is always open.
-          </p>
-          <a
-            href={`mailto:${portfolio.email}`}
-            className="self-start px-6 py-3 bg-neutral-900 text-neutral-50 rounded-md hover:bg-amber-700 transition duration-150"
-          >
-            Say hello
-          </a>
-        </div>
       </Section>
     </div>
   )
