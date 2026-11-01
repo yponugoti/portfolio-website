@@ -11,8 +11,7 @@ export const portfolio: Portfolio = {
   tagline: "Software Engineer",
   location: "Tempe, AZ",
   about: [
-    "I'm a software engineering student at [Your University], graduating in [Year]. I enjoy working across the stack — from designing clean APIs to crafting interfaces that feel effortless to use.",
-    "Lately I've been exploring [an area you're interested in, e.g. distributed systems, ML, developer tooling]. Outside of code, you'll find me [a hobby or two].",
+    "I'm a CS student at ASU"
   ],
   email: "you@example.com",
   socials: [

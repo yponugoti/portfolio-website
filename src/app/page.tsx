@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRightIcon } from "@heroicons/react/24/solid"
+import { ArrowRightIcon, MapPinIcon } from "@heroicons/react/24/solid"
 import ArticleRow from "@/components/ArticleRow"
 import ExperienceItem from "@/components/ExperienceItem"
 import ExternalLink from "@/components/ExternalLink"
@@ -25,6 +25,12 @@ const HomePage = () => {
           <p className="font-poppins text-xl text-neutral-600">
             {portfolio.tagline}
           </p>
+          {portfolio.location && (
+            <p className="flex items-center gap-1.5 font-poppins text-neutral-500">
+              <MapPinIcon width={18} />
+              {portfolio.location}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-4 font-poppins text-lg text-neutral-700 leading-relaxed">
           {portfolio.about.map((paragraph) => (
