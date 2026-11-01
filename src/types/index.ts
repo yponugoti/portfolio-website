@@ -37,4 +37,5 @@ export type Portfolio = {
   resume?: string
   experience: Experience[]
   projects: Project[]
+  writingComingSoon?: boolean
 }

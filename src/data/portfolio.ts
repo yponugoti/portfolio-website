@@ -29,4 +29,6 @@ export const portfolio: Portfolio = {
   ],
   projects: [
   ],
+  // Set to false once you've published your first post in src/articles/.
+  writingComingSoon: true,
 }

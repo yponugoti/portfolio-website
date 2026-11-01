@@ -66,15 +66,19 @@ const HomePage = () => {
         id="writing"
         title="Writing"
         action={
-          <Link
-            href="/writing"
-            className="flex items-center gap-1 font-poppins text-sm text-neutral-600 hover:text-amber-700 transition duration-150"
-          >
-            All writing <ArrowRightIcon width={14} />
-          </Link>
+          !portfolio.writingComingSoon && (
+            <Link
+              href="/writing"
+              className="flex items-center gap-1 font-poppins text-sm text-neutral-600 hover:text-amber-700 transition duration-150"
+            >
+              All writing <ArrowRightIcon width={14} />
+            </Link>
+          )
         }
       >
-        {recentArticles.length > 0 ? (
+        {portfolio.writingComingSoon ? (
+          <p className="font-poppins text-lg text-neutral-500">Coming soon.</p>
+        ) : recentArticles.length > 0 ? (
           <div className="flex flex-col">
             {recentArticles.map((article) => (
               <ArticleRow key={article.id} article={article} />

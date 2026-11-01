@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import ArticleItemList from "@/components/ArticleListItem"
+import { portfolio } from "@/data/portfolio"
 import { getCategorisedArticles } from "@/lib/articles"
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ const WritingPage = () => {
           Notes, ideas, and things I&apos;ve learned along the way.
         </p>
       </header>
-      {categories.length > 0 ? (
+      {portfolio.writingComingSoon ? (
+        <p className="font-poppins text-lg text-neutral-500">Coming soon.</p>
+      ) : categories.length > 0 ? (
         <section className="md:grid md:grid-cols-2 flex flex-col gap-10">
           {categories.map((category) => (
             <ArticleItemList
