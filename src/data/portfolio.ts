@@ -67,5 +67,5 @@ export const portfolio: Portfolio = {
     },
   ],
   // Set to false once you've published your first post in src/articles/.
-  writingComingSoon: false,
+  writingComingSoon: true,
 }

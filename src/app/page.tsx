@@ -11,7 +11,7 @@ const RECENT_ARTICLE_COUNT = 5
 
 const HomePage = () => {
   const recentArticles = getRecentArticles(RECENT_ARTICLE_COUNT)
-  const showWriting = !portfolio.writingComingSoon && recentArticles.length > 0
+  const showWriting = portfolio.writingComingSoon || recentArticles.length > 0
 
   const contactLinks = [
     { label: "Mail", href: `mailto:${portfolio.email}` },
@@ -118,9 +118,13 @@ const HomePage = () => {
       {showWriting && (
         <div className="mt-16">
           <IndexBlock title="Writing" n={writingNumber} href="/writing">
-            {recentArticles.map((article) => (
-              <ArticleRow key={article.id} article={article} />
-            ))}
+            {portfolio.writingComingSoon ? (
+              <li className="text-neutral-500">Coming soon</li>
+            ) : (
+              recentArticles.map((article) => (
+                <ArticleRow key={article.id} article={article} />
+              ))
+            )}
           </IndexBlock>
         </div>
       )}
