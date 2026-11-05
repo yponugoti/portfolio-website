@@ -1,8 +1,7 @@
-import Link from "next/link"
 import ArticleRow from "@/components/ArticleRow"
 import IndexBlock from "@/components/IndexBlock"
 import Marker from "@/components/Marker"
-import ProjectEntry from "@/components/ProjectEntry"
+import ProjectRow from "@/components/ProjectRow"
 import Square from "@/components/Square"
 import { portfolio } from "@/data/portfolio"
 import { getRecentArticles } from "@/lib/articles"
@@ -19,6 +18,14 @@ const HomePage = () => {
     ...portfolio.socials,
     ...(portfolio.resume ? [{ label: "Resume", href: portfolio.resume }] : []),
   ]
+
+  // Sections are numbered in order; hidden sections don't take a number.
+  let sectionCount = 1
+  const nextNumber = () => ++sectionCount
+  const contactNumber = nextNumber()
+  const experienceNumber = portfolio.experience.length > 0 ? nextNumber() : 0
+  const projectsNumber = portfolio.projects.length > 0 ? nextNumber() : 0
+  const writingNumber = showWriting ? nextNumber() : 0
 
   return (
     <div className="flex flex-col">
@@ -37,7 +44,7 @@ const HomePage = () => {
 
       {/* Index */}
       <div className="pt-6 flex flex-col md:flex-row gap-8 md:gap-0">
-        <IndexBlock title="Contact" n={2}>
+        <IndexBlock title="Contact" n={contactNumber}>
           {contactLinks.map((link, i) => (
             <li key={link.href}>
               <a
@@ -64,17 +71,22 @@ const HomePage = () => {
               aria-hidden
               className="hidden md:block w-px mx-8 mt-5 bg-neutral-200/70"
             />
-            <IndexBlock title="Experience" n={3}>
-              {portfolio.experience.map((experience) => (
+            <IndexBlock title="Experience" n={experienceNumber}>
+              {portfolio.experience.map((experience, i) => (
                 <li
                   key={`${experience.organization}-${experience.role}`}
-                  className="flex items-baseline justify-between gap-4"
+                  className="relative flex items-center justify-between gap-4"
                   title={experience.role}
                 >
-                  <span className="flex items-baseline gap-1.5 min-w-0">
-                    <span className="self-center">
-                      <Square color={experience.color} />
-                    </span>
+                  {/* Timeline: a faint line from this square down to the next one */}
+                  {i < portfolio.experience.length - 1 && (
+                    <span
+                      aria-hidden
+                      className="absolute left-[2px] top-1/2 h-full w-px bg-neutral-200"
+                    />
+                  )}
+                  <span className="relative flex items-center gap-1.5 min-w-0">
+                    <Square color={experience.color} />
                     <span className="truncate">{experience.organization}</span>
                   </span>
                   <span className="font-mono text-[11px] tabular-nums shrink-0">
@@ -87,34 +99,25 @@ const HomePage = () => {
         )}
       </div>
 
+      {/* Projects */}
+      {portfolio.projects.length > 0 && (
+        <div className="mt-16">
+          <IndexBlock title="Projects" n={projectsNumber}>
+            {portfolio.projects.map((project) => (
+              <ProjectRow key={project.name} project={project} />
+            ))}
+          </IndexBlock>
+        </div>
+      )}
+
       {/* Writing */}
       {showWriting && (
-        <section className="mt-16 flex flex-col gap-1.5">
-          <div className="flex items-baseline justify-between">
-            <h2>
-              <Link
-                href="/writing"
-                className="hover:text-neutral-500 transition-colors"
-              >
-                Writing
-              </Link>
-            </h2>
-            <Marker n={4} />
-          </div>
-          <ul className="flex flex-col leading-[1.15]">
+        <div className="mt-16">
+          <IndexBlock title="Writing" n={writingNumber} href="/writing">
             {recentArticles.map((article) => (
               <ArticleRow key={article.id} article={article} />
             ))}
-          </ul>
-        </section>
-      )}
-
-      {/* Projects */}
-      {portfolio.projects.length > 0 && (
-        <div className="mt-20 flex flex-col gap-20">
-          {portfolio.projects.map((project) => (
-            <ProjectEntry key={project.name} project={project} />
-          ))}
+          </IndexBlock>
         </div>
       )}
     </div>

@@ -29,12 +29,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${newsreader.variable} ${geistMono.variable}`}
     >
       <body className="bg-white text-neutral-800 font-serif text-[14px] tracking-[-0.01em] min-h-screen flex flex-col">
-        <main className="grow w-full max-w-[34rem] mx-auto px-4 pt-20 md:pt-[22vh]">
+        <main className="grow w-full max-w-[34rem] mx-auto px-4 pt-20 md:pt-[22vh] pb-32">
           {children}
         </main>
-        <footer className="w-full max-w-[34rem] mx-auto px-4 pt-32 pb-16 font-mono text-[11px] text-neutral-400">
-          © {new Date().getFullYear()} {portfolio.name}
-        </footer>
       </body>
     </html>
   );
