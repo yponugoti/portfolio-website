@@ -8,11 +8,13 @@ import type { Portfolio } from "@/types"
  * and projects as markdown files in `src/projects/`.
  */
 export const portfolio: Portfolio = {
-  name: "Yash Ponugoti",
+  name: "Yaswanth Ponugoti",
   tagline: "Software Engineer",
   location: "Tempe, AZ",
   about: [
-    "I'm a CS student at ASU"
+    "I enjoy finding novel answers to esoteric problems. These days, I'm exploring the systems and silicon at the frontier of computing.",
+    "I'm a computer science and mathematics student at Arizona State University. Along the way, I've interned at Capital One, Garmin, and Fox.",
+    "Elsewhere, you'll find me on the climbing wall, the soccer field, or at the poker table."
   ],
   email: "yponugoti14@gmail.com",
   socials: [
