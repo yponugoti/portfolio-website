@@ -29,7 +29,7 @@ const ProjectPage = async ({ params }: PageProps<"/projects/[slug]">) => {
 
   return (
     <section className="flex flex-col">
-      <header className="flex items-baseline justify-between gap-4 pb-6 mb-6 border-b border-neutral-200/70">
+      <header className="flex items-baseline justify-between gap-4 pb-[31px] mb-[31px] border-b border-[rgba(225,228,232,0.8)]">
         <Link
           href="/projects"
           className="text-neutral-500 hover:text-neutral-900 transition-colors"
@@ -44,12 +44,12 @@ const ProjectPage = async ({ params }: PageProps<"/projects/[slug]">) => {
       </header>
 
       <div className="flex flex-col gap-3 mb-8">
-        <h1 className="flex items-center gap-1.5 text-lg">
+        <h1 className="flex items-center gap-1 text-[18px] leading-[22px] tracking-[-0.03em]">
           <Square color={project.color} />
           {project.name}
         </h1>
         {project.description && (
-          <p className="leading-snug text-neutral-500">{project.description}</p>
+          <p className="text-neutral-500">{project.description}</p>
         )}
         {project.links && project.links.length > 0 && (
           <div className="flex flex-wrap gap-x-4 gap-y-1">
@@ -72,7 +72,7 @@ const ProjectPage = async ({ params }: PageProps<"/projects/[slug]">) => {
       <ProjectCover
         project={project}
         sizes="(min-width: 576px) 544px, 100vw"
-        className="rounded-md border border-neutral-200/70 mb-10"
+        className="rounded-md border border-[rgba(225,228,232,0.8)] mb-10"
       />
 
       <article

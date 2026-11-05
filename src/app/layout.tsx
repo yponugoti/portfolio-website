@@ -28,8 +28,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${newsreader.variable} ${geistMono.variable}`}
     >
-      <body className="bg-white text-neutral-800 font-serif text-[14px] tracking-[-0.01em] min-h-screen flex flex-col">
-        <main className="grow w-full max-w-[34rem] mx-auto px-4 pt-20 md:pt-[22vh] pb-32">
+      <body className="bg-white text-[#3b3d41] font-serif text-[13px] leading-[15px] tracking-[-0.01em] min-h-screen flex flex-col">
+        <main className="grow w-full max-w-[552px] mx-auto px-4 pt-20 pb-32">
           {children}
         </main>
       </body>

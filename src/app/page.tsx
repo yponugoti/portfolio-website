@@ -32,12 +32,12 @@ const HomePage = () => {
   return (
     <div className="flex flex-col">
       {/* Intro */}
-      <header className="flex flex-col gap-4 pb-6 border-b border-neutral-200/70">
+      <header className="flex flex-col gap-[15px] pb-[31px] border-b border-[rgba(225,228,232,0.8)]">
         <div className="flex items-baseline justify-between">
-          <h1 className="text-lg">{portfolio.name}</h1>
+          <h1 className="text-[18px] leading-[22px] tracking-[-0.03em]">{portfolio.name}</h1>
           <Marker n={1} />
         </div>
-        <div className="flex flex-col gap-3 leading-snug">
+        <div className="flex flex-col gap-4">
           {portfolio.about.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -45,7 +45,7 @@ const HomePage = () => {
       </header>
 
       {/* Index */}
-      <div className="pt-6 flex flex-col md:flex-row gap-8 md:gap-0">
+      <div className="pt-[31px] flex flex-col md:flex-row gap-8 md:gap-0">
         <IndexBlock title="Contact" n={contactNumber}>
           {contactLinks.map((link, i) => (
             <li key={link.href}>
@@ -71,7 +71,7 @@ const HomePage = () => {
           <>
             <div
               aria-hidden
-              className="hidden md:block w-px mx-8 mt-5 bg-neutral-200/70"
+              className="hidden md:block w-px h-[35px] mx-10 mt-6 bg-[rgba(225,228,232,0.8)]"
             />
             <IndexBlock title="Experience" n={experienceNumber}>
               {portfolio.experience.map((experience, i) => (
@@ -87,7 +87,7 @@ const HomePage = () => {
                       className="absolute left-[2px] top-1/2 h-full w-px bg-neutral-200"
                     />
                   )}
-                  <span className="relative flex items-center gap-1.5 min-w-0">
+                  <span className="relative flex items-center gap-1 min-w-0">
                     <Square color={experience.color} />
                     <span className="truncate">{experience.organization}</span>
                   </span>
@@ -103,7 +103,7 @@ const HomePage = () => {
 
       {/* Projects */}
       {projects.length > 0 && (
-        <div className="mt-16">
+        <div className="mt-[84px]">
           <IndexBlock
             title="Projects"
             n={projectsNumber}
@@ -119,10 +119,10 @@ const HomePage = () => {
 
       {/* Writing */}
       {showWriting && (
-        <div className="mt-16">
+        <div className="mt-[84px]">
           <IndexBlock title="Writing" n={writingNumber} href="/writing">
             {portfolio.writingComingSoon ? (
-              <li className="text-neutral-500">Coming soon</li>
+              <li className="text-[#a0a5ac]">Coming soon</li>
             ) : (
               recentArticles.map((article) => (
                 <ArticleRow key={article.id} article={article} />

@@ -15,8 +15,8 @@ const WritingPage = () => {
 
   return (
     <section className="flex flex-col">
-      <header className="flex items-baseline justify-between pb-6 border-b border-neutral-200/70">
-        <h1 className="text-lg">
+      <header className="flex items-baseline justify-between pb-[31px] border-b border-[rgba(225,228,232,0.8)]">
+        <h1 className="text-[18px] leading-[22px] tracking-[-0.03em]">
           <Link href="/" className="text-neutral-400 hover:text-neutral-900 transition-colors">
             {portfolio.name}
           </Link>
@@ -25,7 +25,7 @@ const WritingPage = () => {
         </h1>
       </header>
 
-      <div className="pt-6 flex flex-col gap-10">
+      <div className="pt-[31px] flex flex-col gap-[84px]">
         {portfolio.writingComingSoon ? (
           <p className="text-neutral-500">Coming soon.</p>
         ) : categories.length > 0 ? (
@@ -35,7 +35,7 @@ const WritingPage = () => {
                 <h2>{category}</h2>
                 <Marker n={i + 1} />
               </div>
-              <ul className="flex flex-col leading-[1.15]">
+              <ul className="flex flex-col">
                 {articles[category].map((article) => (
                   <ArticleRow key={article.id} article={article} />
                 ))}

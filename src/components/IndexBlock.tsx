@@ -17,7 +17,7 @@ const IndexBlock = ({
   title,
   n,
   href,
-  listClassName = "flex flex-col leading-[1.15]",
+  listClassName = "flex flex-col",
   children,
 }: Props) => (
   <section className="flex-1 min-w-0 flex flex-col gap-1.5">

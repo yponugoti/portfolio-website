@@ -13,8 +13,8 @@ const ProjectsPage = () => {
 
   return (
     <section className="flex flex-col">
-      <header className="flex items-baseline justify-between pb-6 border-b border-neutral-200/70">
-        <h1 className="text-lg">
+      <header className="flex items-baseline justify-between pb-[31px] border-b border-[rgba(225,228,232,0.8)]">
+        <h1 className="text-[18px] leading-[22px] tracking-[-0.03em]">
           <Link href="/" className="text-neutral-400 hover:text-neutral-900 transition-colors">
             {portfolio.name}
           </Link>
@@ -23,7 +23,7 @@ const ProjectsPage = () => {
         </h1>
       </header>
 
-      <div className="pt-6">
+      <div className="pt-[31px]">
         {projects.length > 0 ? (
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {projects.map((project) => (

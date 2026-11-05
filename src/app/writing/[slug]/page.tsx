@@ -27,7 +27,7 @@ const Article = async ({ params }: PageProps<"/writing/[slug]">) => {
 
   return (
     <section className="flex flex-col">
-      <header className="flex items-baseline justify-between gap-4 pb-6 mb-6 border-b border-neutral-200/70">
+      <header className="flex items-baseline justify-between gap-4 pb-[31px] mb-[31px] border-b border-[rgba(225,228,232,0.8)]">
         <Link
           href="/writing"
           className="text-neutral-500 hover:text-neutral-900 transition-colors"
