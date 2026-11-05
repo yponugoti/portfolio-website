@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import ProjectCover from "@/components/ProjectCover"
-import Square from "@/components/Square"
 import { getProjectData, getProjectSlugs } from "@/lib/projects"
 
 // Only projects that exist at build time are valid; anything else 404s.
@@ -45,7 +44,6 @@ const ProjectPage = async ({ params }: PageProps<"/projects/[slug]">) => {
 
       <div className="flex flex-col gap-3 mb-8">
         <h1 className="flex items-center gap-1 text-[18px] leading-[22px] tracking-[-0.03em]">
-          <Square color={project.color} />
           {project.name}
         </h1>
         {project.description && (

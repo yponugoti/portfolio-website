@@ -1,10 +1,9 @@
 import Link from "next/link"
 import type { Project } from "@/types"
 import ProjectCover from "./ProjectCover"
-import Square from "./Square"
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  const { slug, name, description, color } = project
+  const { slug, name, description } = project
 
   return (
     <li>
@@ -20,7 +19,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
         />
         <div className="flex flex-col gap-1.5 p-3.5">
           <div className="flex items-center gap-1 min-w-0">
-            <Square color={color} />
             <span className="truncate">{name}</span>
           </div>
           {description && (

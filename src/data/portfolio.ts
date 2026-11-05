@@ -22,7 +22,7 @@ export const portfolio: Portfolio = {
   experience: [
     {
       role: "Software Engineering Intern",
-      // color: "#d03027", // optional: color of the square next to it
+      color: "#d03027", // color of the square next to it
       organization: "Capital One",
       start: "June 2026",
       end: "Aug 2026",
@@ -31,6 +31,7 @@ export const portfolio: Portfolio = {
     },
     {
       role: "Software Engineering Intern",
+      color: "#007cc3",
       organization: "Garmin",
       start: "May 2025",
       end: "Nov 2025",
@@ -39,6 +40,7 @@ export const portfolio: Portfolio = {
     },
     {
       role: "Software Engineering Intern",
+      color: "#f5a300",
       organization: "Fox Sports",
       start: "Sept 2024",
       end: "Dec 2024",

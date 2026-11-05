@@ -24,6 +24,7 @@ const readProjectFile = (slug: string) => {
     description: data.description ?? "",
     color: data.color,
     image: data.image,
+    cover: data.cover,
     tech: data.tech,
     links: data.links,
     order: data.order,

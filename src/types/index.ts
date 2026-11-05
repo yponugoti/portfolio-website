@@ -22,6 +22,15 @@ export type Experience = {
   tech?: string[]
 }
 
+export type CoverStyle =
+  | "gradient"
+  | "mesh"
+  | "grain"
+  | "rings"
+  | "dots"
+  | "waves"
+  | "letter"
+
 /** Front matter of a project markdown file in src/projects/. */
 export type Project = {
   /** File name without .md, used in the URL: /projects/<slug> */
@@ -33,6 +42,8 @@ export type Project = {
   color?: string
   /** Cover image, path under /public, e.g. "/projects/my-app.jpg". */
   image?: string
+  /** Generated artwork used when there's no image. Defaults to "grain". */
+  cover?: CoverStyle
   tech?: string[]
   /** External links shown on the project page, e.g. GitHub or a live demo. */
   links?: Link[]
