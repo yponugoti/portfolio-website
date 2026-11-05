@@ -4,7 +4,8 @@ import type { Portfolio } from "@/types"
  * All of the content on the portfolio lives here.
  * Edit this file to update the site — no component changes needed.
  *
- * Blog posts still live as markdown files in `src/articles/`.
+ * Blog posts live as markdown files in `src/articles/`,
+ * and projects as markdown files in `src/projects/`.
  */
 export const portfolio: Portfolio = {
   name: "Yash Ponugoti",
@@ -44,27 +45,6 @@ export const portfolio: Portfolio = {
       highlights: [
       ]
     }
-  ],
-  // Each project is a card in the Projects grid. The card links to links[0].
-  // Put cover images in public/projects/.
-  projects: [
-    // SAMPLES — replace or delete (and remove public/projects/sample.jpg)
-    {
-      name: "Sample Project",
-      description:
-        "A one or two sentence description of what the project does and who it's for.",
-      tech: ["Next.js", "TypeScript"],
-      color: "#2f7bf5",
-      image: "/projects/sample.jpg",
-      links: [{ label: "GitHub", href: "https://github.com/yponugoti" }],
-    },
-    {
-      name: "Sample Without Image",
-      description:
-        "Cards without an image get a soft wash of the project's color instead.",
-      tech: ["Python"],
-      color: "#7c3aed",
-    },
   ],
   // Set to false once you've published your first post in src/articles/.
   writingComingSoon: true,

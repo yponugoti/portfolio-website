@@ -5,12 +5,14 @@ import ProjectCard from "@/components/ProjectCard"
 import Square from "@/components/Square"
 import { portfolio } from "@/data/portfolio"
 import { getRecentArticles } from "@/lib/articles"
+import { getProjects } from "@/lib/projects"
 import { formatYearRange } from "@/lib/format"
 
 const RECENT_ARTICLE_COUNT = 5
 
 const HomePage = () => {
   const recentArticles = getRecentArticles(RECENT_ARTICLE_COUNT)
+  const projects = getProjects()
   const showWriting = portfolio.writingComingSoon || recentArticles.length > 0
 
   const contactLinks = [
@@ -24,7 +26,7 @@ const HomePage = () => {
   const nextNumber = () => ++sectionCount
   const contactNumber = nextNumber()
   const experienceNumber = portfolio.experience.length > 0 ? nextNumber() : 0
-  const projectsNumber = portfolio.projects.length > 0 ? nextNumber() : 0
+  const projectsNumber = projects.length > 0 ? nextNumber() : 0
   const writingNumber = showWriting ? nextNumber() : 0
 
   return (
@@ -100,15 +102,16 @@ const HomePage = () => {
       </div>
 
       {/* Projects */}
-      {portfolio.projects.length > 0 && (
+      {projects.length > 0 && (
         <div className="mt-16">
           <IndexBlock
             title="Projects"
             n={projectsNumber}
+            href="/projects"
             listClassName="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1.5"
           >
-            {portfolio.projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </IndexBlock>
         </div>

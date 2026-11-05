@@ -2,8 +2,7 @@ import fs from "fs"
 import matter from "gray-matter"
 import path from "path"
 import moment from "moment"
-import { remark } from "remark"
-import html from "remark-html"
+import { markdownToHtml } from "./markdown"
 
 import type { ArticleItem } from "../types"
 
@@ -69,13 +68,9 @@ export const getArticleData = async (id: string) => {
   const fileContents = fs.readFileSync(fullPath, "utf-8")
   const matterResult = matter(fileContents)
 
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content)
-
   return {
     id,
-    contentHtml: processedContent.toString(),
+    contentHtml: await markdownToHtml(matterResult.content),
     title: matterResult.data.title as string,
     category: matterResult.data.category as string,
     date: formatArticleDate(matterResult.data.date),
