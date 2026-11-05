@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import ProjectCover from "@/components/ProjectCover"
 import { getProjectData, getProjectSlugs } from "@/lib/projects"
 
 // Only projects that exist at build time are valid; anything else 404s.
@@ -66,12 +65,6 @@ const ProjectPage = async ({ params }: PageProps<"/projects/[slug]">) => {
           </div>
         )}
       </div>
-
-      <ProjectCover
-        project={project}
-        sizes="(min-width: 576px) 544px, 100vw"
-        className="rounded-md border border-[rgba(225,228,232,0.8)] mb-10"
-      />
 
       <article
         className="article"
