@@ -1,7 +1,7 @@
 import ArticleRow from "@/components/ArticleRow"
 import IndexBlock from "@/components/IndexBlock"
 import Marker from "@/components/Marker"
-import ProjectRow from "@/components/ProjectRow"
+import ProjectCard from "@/components/ProjectCard"
 import Square from "@/components/Square"
 import { portfolio } from "@/data/portfolio"
 import { getRecentArticles } from "@/lib/articles"
@@ -102,9 +102,13 @@ const HomePage = () => {
       {/* Projects */}
       {portfolio.projects.length > 0 && (
         <div className="mt-16">
-          <IndexBlock title="Projects" n={projectsNumber}>
+          <IndexBlock
+            title="Projects"
+            n={projectsNumber}
+            listClassName="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1.5"
+          >
             {portfolio.projects.map((project) => (
-              <ProjectRow key={project.name} project={project} />
+              <ProjectCard key={project.name} project={project} />
             ))}
           </IndexBlock>
         </div>

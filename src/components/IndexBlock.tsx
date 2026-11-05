@@ -7,11 +7,19 @@ interface Props {
   n: number
   /** Optional page the title links to, e.g. "/writing". */
   href?: string
+  /** Classes for the list itself. Defaults to a tight vertical list. */
+  listClassName?: string
   children: ReactNode
 }
 
 /** A titled list with a "[n]" marker on the right, e.g. Contact or Experience. */
-const IndexBlock = ({ title, n, href, children }: Props) => (
+const IndexBlock = ({
+  title,
+  n,
+  href,
+  listClassName = "flex flex-col leading-[1.15]",
+  children,
+}: Props) => (
   <section className="flex-1 min-w-0 flex flex-col gap-1.5">
     <div className="flex items-baseline justify-between">
       <h2>
@@ -25,7 +33,7 @@ const IndexBlock = ({ title, n, href, children }: Props) => (
       </h2>
       <Marker n={n} />
     </div>
-    <ul className="flex flex-col leading-[1.15]">{children}</ul>
+    <ul className={listClassName}>{children}</ul>
   </section>
 )
 

@@ -26,10 +26,11 @@ export type Project = {
   name: string
   description: string
   tech: string[]
-  year?: string
   /** Color of the little square next to the title. Defaults to black. */
   color?: string
-  /** The project title links to the first link. */
+  /** Cover image, path under /public, e.g. "/projects/my-app.jpg". Without one, the card shows a soft wash of `color`. */
+  image?: string
+  /** The whole card links to the first link. */
   links?: Link[]
 }
 
