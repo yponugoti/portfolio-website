@@ -1,42 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --font-cormorantGaramond: var(--font-cormorant-garamond), serif;
-  --font-poppins: var(--font-poppins), sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Markdown articles */
 .article {
-  @apply flex flex-col gap-3 font-poppins text-lg tracking-wide mb-20;
+  @apply flex flex-col gap-4 leading-snug;
 }
 
 .article > h1 {
-  @apply font-cormorantGaramond text-4xl text-center tracking-tight;
+  @apply text-xl;
 }
 
 .article > h2 {
-  @apply font-cormorantGaramond text-3xl tracking-tight;
+  @apply text-lg mt-4;
+}
+
+.article > h3 {
+  @apply mt-2;
+}
+
+.article a {
+  @apply underline decoration-neutral-300 underline-offset-2 hover:decoration-neutral-900;
 }
 
 .article > ol {
-  @apply list-decimal flex flex-col mx-10 gap-2;
+  @apply list-decimal flex flex-col ml-5 gap-1;
 }
 
 .article > ul {
-  @apply list-disc flex flex-col mx-10 gap-2;
+  @apply list-disc flex flex-col ml-5 gap-1;
 }
 
 .article > pre {
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+  @apply bg-neutral-50 font-mono text-xs p-4 overflow-x-auto;
+}
+
+.article :not(pre) > code {
+  @apply font-mono text-[0.9em];
 }
 
 .article > blockquote {
-  @apply pl-5 italic border-l-2 border-neutral-600/40;
+  @apply pl-4 italic border-l border-neutral-200 text-neutral-500;
 }
 
 .article > p > img {
-  @apply w-1/2 mx-auto;
+  @apply w-full bg-neutral-50;
 }

@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
-import ArticleItemList from "@/components/ArticleListItem"
+import Link from "next/link"
+import ArticleRow from "@/components/ArticleRow"
+import Marker from "@/components/Marker"
 import { portfolio } from "@/data/portfolio"
 import { getCategorisedArticles } from "@/lib/articles"
 
@@ -12,32 +14,38 @@ const WritingPage = () => {
   const categories = Object.keys(articles)
 
   return (
-    <section className="mx-auto max-w-3xl px-6 mt-20 flex flex-col gap-16 mb-20">
-      <header className="flex flex-col gap-3">
-        <h1 className="font-cormorantGaramond text-6xl text-neutral-900">
+    <section className="flex flex-col">
+      <header className="flex items-baseline justify-between pb-6 border-b border-neutral-200/70">
+        <h1 className="text-lg">
+          <Link href="/" className="text-neutral-400 hover:text-neutral-900 transition-colors">
+            {portfolio.name}
+          </Link>
+          <span className="text-neutral-300"> / </span>
           Writing
         </h1>
-        <p className="font-poppins text-lg text-neutral-600">
-          Notes, ideas, and things I&apos;ve learned along the way.
-        </p>
       </header>
-      {portfolio.writingComingSoon ? (
-        <p className="font-poppins text-lg text-neutral-500">Coming soon.</p>
-      ) : categories.length > 0 ? (
-        <section className="md:grid md:grid-cols-2 flex flex-col gap-10">
-          {categories.map((category) => (
-            <ArticleItemList
-              category={category}
-              articles={articles[category]}
-              key={category}
-            />
-          ))}
-        </section>
-      ) : (
-        <p className="font-poppins text-neutral-500">
-          Nothing published yet — check back soon.
-        </p>
-      )}
+
+      <div className="pt-6 flex flex-col gap-10">
+        {portfolio.writingComingSoon ? (
+          <p className="text-neutral-500">Coming soon.</p>
+        ) : categories.length > 0 ? (
+          categories.map((category, i) => (
+            <div key={category} className="flex flex-col gap-1.5">
+              <div className="flex items-baseline justify-between">
+                <h2>{category}</h2>
+                <Marker n={i + 1} />
+              </div>
+              <ul className="flex flex-col leading-[1.15]">
+                {articles[category].map((article) => (
+                  <ArticleRow key={article.id} article={article} />
+                ))}
+              </ul>
+            </div>
+          ))
+        ) : (
+          <p className="text-neutral-500">Nothing published yet — check back soon.</p>
+        )}
+      </div>
     </section>
   )
 }

@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Poppins } from "next/font/google";
-import Nav from "@/components/Nav";
+import { Geist_Mono, Newsreader } from "next/font/google";
 import { portfolio } from "@/data/portfolio";
 import "./globals.css";
 
-const cormorant_garamond = Cormorant_Garamond({
-  variable: "--font-cormorant-garamond",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["400"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "600"],
 });
 
 export const metadata: Metadata = {
@@ -29,12 +26,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${cormorant_garamond.variable} ${poppins.variable}`}
+      className={`${newsreader.variable} ${geistMono.variable}`}
     >
-      <body className="bg-neutral-100 text-neutral-900 min-h-screen flex flex-col">
-        <Nav />
-        <main className="grow">{children}</main>
-        <footer className="mx-auto max-w-3xl w-full px-6 py-10 font-poppins text-sm text-neutral-500">
+      <body className="bg-white text-neutral-800 font-serif text-[14px] tracking-[-0.01em] min-h-screen flex flex-col">
+        <main className="grow w-full max-w-[34rem] mx-auto px-4 pt-20 md:pt-[22vh]">
+          {children}
+        </main>
+        <footer className="w-full max-w-[34rem] mx-auto px-4 pt-32 pb-16 font-mono text-[11px] text-neutral-400">
           © {new Date().getFullYear()} {portfolio.name}
         </footer>
       </body>

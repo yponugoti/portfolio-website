@@ -19,6 +19,7 @@ export const portfolio: Portfolio = {
   experience: [
     {
       role: "Software Engineering Intern",
+      // color: "#d03027", // optional: color of the square next to it
       organization: "Capital One",
       start: "May 2026",
       end: "Aug 2026",
@@ -26,6 +27,17 @@ export const portfolio: Portfolio = {
       ],
     },
   ],
+  // Each project shows as an entry with optional media below the index, e.g.
+  // {
+  //   name: "My App",
+  //   year: "2026",
+  //   description: "What it does in one or two sentences.",
+  //   tech: ["Next.js"],
+  //   color: "#2f7bf5",
+  //   links: [{ label: "Live", href: "https://..." }],
+  //   credits: "With Jane Doe and John Smith",
+  //   media: { type: "video", src: "/projects/my-app.mp4", aspectRatio: "4 / 3" },
+  // },
   projects: [
   ],
   // Set to false once you've published your first post in src/articles/.
