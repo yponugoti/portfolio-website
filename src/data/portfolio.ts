@@ -12,7 +12,7 @@ export const portfolio: Portfolio = {
   tagline: "Software Engineer",
   location: "Tempe, AZ",
   about: [
-    "I enjoy finding novel answers to esoteric problems. These days, I'm exploring the systems and silicon at the frontier of computing.",
+    "I enjoy finding novel approaches to open problems. These days, I'm exploring the systems and silicon at the frontier of computing.",
     "I'm a computer science and mathematics student at Arizona State University. Along the way, I've interned at Capital One, Garmin, and Fox.",
     "Elsewhere, you'll find me on the climbing wall, the soccer field, or at the poker table."
   ],
